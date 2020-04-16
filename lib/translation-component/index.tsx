@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { getTranslationsDict } from '@/redux/translation-module';
 
 type PropsType = {
-  translatedDict: Record<string, any>;
   tKey: string;
 };
 
