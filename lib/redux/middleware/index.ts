@@ -11,7 +11,6 @@ export const translationMiddleware = ({
   action: any,
 ) => {
   if (action.type === FETCH_LANG_ACTION && action.payload) {
-    // console.log("SET_LANG_ACTION goes", action.payload);
     return fetchDictionaryAction({
       dispatch: store.dispatch,
       lang: action.payload,
