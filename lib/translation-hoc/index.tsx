@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { getTranslationsDict } from '@/redux/translation-module';
+import { getTranslationsDictionary } from '@/redux/translation-module';
 
 type PropsType = {
   translatedDict: Record<string, any>;
@@ -19,7 +19,7 @@ export const ConnectedWrapperFunction = (Component: any) =>
   };
 
 const mapStateToProps = (store: any) => ({
-  translatedDict: getTranslationsDict(store),
+  translatedDict: getTranslationsDictionary(store),
 });
 
 export const TranslationHOC = (Component: any) =>

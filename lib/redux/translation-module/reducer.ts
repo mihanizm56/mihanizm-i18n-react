@@ -1,8 +1,9 @@
 import { ITranslationStorage } from '@/types/types';
-import { SET_LANG_ACTION } from './actions';
+import { SET_LANG_DICT_ACTION } from './actions';
 
 const initialState: ITranslationStorage = {
-  data: {},
+  dictionary: {},
+  locale: '',
 };
 
 export const translationReducer = (
@@ -10,8 +11,12 @@ export const translationReducer = (
   { type, payload }: any,
 ) => {
   switch (type) {
-    case SET_LANG_ACTION:
-      return { ...state, data: { ...payload } };
+    case SET_LANG_DICT_ACTION:
+      return {
+        ...state,
+        dictionary: payload.dictionary,
+        locale: payload.locale,
+      };
 
     default:
       return state;

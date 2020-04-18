@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { getTranslationsDict } from '@/redux/translation-module';
+import { getTranslationsDictionary } from '@/redux/translation-module';
 
 type PropsType = {
   tKey: string;
@@ -8,7 +8,7 @@ type PropsType = {
 
 export const TranslationComponent = memo(({ tKey }: PropsType) => {
   const translatedDict = useSelector((store: any) =>
-    getTranslationsDict(store),
+    getTranslationsDictionary(store),
   );
 
   const translatedText = useMemo(() => translatedDict[tKey] || tKey, [

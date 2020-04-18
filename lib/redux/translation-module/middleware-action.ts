@@ -1,21 +1,20 @@
 import { FetchDictionaryActionParams } from '@/types/types';
-import { setLangAction } from './actions';
+import { setLangDictAction } from './actions';
 
 export const fetchDictionaryAction = async ({
   dispatch,
   lang,
-  url,
   request,
 }: FetchDictionaryActionParams) => {
   try {
-    const { data = {}, error, errorText } = await request({ lang, url });
+    const { data = {}, error, errorText } = await request(lang);
 
     if (error) {
       throw new Error(errorText);
     }
 
     if (data) {
-      dispatch(setLangAction(data));
+      dispatch(setLangDictAction({ dictionary: data, locale: lang }));
     }
   } catch (error) {
     console.error('error when fetch new dict', error);

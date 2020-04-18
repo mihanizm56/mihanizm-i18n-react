@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { getTranslationsDict } from '@/redux/translation-module';
+import { getTranslationsDictionary } from '@/redux/translation-module';
 
 type PropsType = {
   translatedDict: Record<string, any>;
@@ -18,7 +18,7 @@ export const WrappedComponent = memo(
 );
 
 const mapStateToProps = (store: any) => ({
-  translatedDict: getTranslationsDict(store),
+  translatedDict: getTranslationsDictionary(store),
 });
 
 export const TranslationRenderProps = connect(mapStateToProps)(

@@ -1,7 +1,8 @@
 export { TranslationHOC } from './translation-hoc';
 export {
-  getTranslationsDict,
-  setLangAction,
+  getTranslationsDictionary,
+  getTranslationsLocale,
+  setLangDictAction,
   fetchLangAction,
   translationReducer as translationStorage,
 } from './redux/translation-module';

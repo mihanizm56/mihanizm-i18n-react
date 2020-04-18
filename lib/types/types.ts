@@ -1,7 +1,8 @@
 import { Dispatch } from 'redux';
 
 export interface ITranslationStorage {
-  data: Record<string, any>;
+  dictionary: Record<string, any>;
+  locale: string;
 }
 
 export interface ITranslationStoragePart {
@@ -25,13 +26,7 @@ export type IResponse = {
   additionalErrors: Record<string, any> | Array<any> | null;
 };
 
-type RequestType = ({
-  lang,
-  url,
-}: {
-  lang: string;
-  url: string;
-}) => Promise<IResponse>;
+type RequestType = (lang: string) => Promise<IResponse>;
 
 export type FetchDictionaryActionParams = {
   dispatch: Dispatch;
