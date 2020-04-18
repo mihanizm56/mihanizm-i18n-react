@@ -26,16 +26,10 @@ export type IResponse = {
   additionalErrors: Record<string, any> | Array<any> | null;
 };
 
-type RequestType = (lang: string) => Promise<IResponse>;
-
 export type FetchDictionaryActionParams = {
   dispatch: Dispatch;
   lang: string;
-  url: string;
-  request: RequestType;
+  request: TranslationRequest;
 };
 
-export type TranslationMiddlewareParams = {
-  url: string;
-  request: RequestType;
-};
+export type TranslationRequest = (lang: string) => Promise<IResponse>;
