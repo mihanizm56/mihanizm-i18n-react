@@ -7,14 +7,16 @@ export const fetchDictionaryAction = async ({
   request,
 }: FetchDictionaryActionParams) => {
   try {
-    const { data = {}, error, errorText } = await request(lang);
+    const { data, error, errorText } = await request(lang);
 
     if (error) {
       throw new Error(errorText);
     }
 
-    if (data) {
-      dispatch(setLangDictAction({ dictionary: data, locale: lang }));
+    if (data && data.dictionary) {
+      dispatch(
+        setLangDictAction({ dictionary: data.dictionary, locale: lang }),
+      );
     }
   } catch (error) {
     console.error('error when fetch new dict', error);

@@ -3,7 +3,7 @@ import { SET_LANG_DICT_ACTION } from './actions';
 
 const initialState: ITranslationStorage = {
   dictionary: {},
-  locale: '',
+  locale: 'en',
 };
 
 export const translationReducer = (

@@ -1,6 +1,6 @@
 {
   "name": "@mihanizm56/i18n-react",
-  "version": "0.0.5-beta.2",
+  "version": "0.0.5-beta.5",
   "description": "translation module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
