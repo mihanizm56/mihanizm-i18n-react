@@ -23,7 +23,7 @@ export type IResponse = {
   error: boolean;
   errorText: string;
   data?: {
-    dictionary: Record<string, any>;
+    dictionary?: Record<string, any>;
   };
   additionalErrors: Record<string, any> | Array<any> | null;
 };
