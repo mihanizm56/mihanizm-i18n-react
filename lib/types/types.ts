@@ -22,9 +22,9 @@ export type Action<T> = (
 export type IResponse = {
   error: boolean;
   errorText: string;
-  data?: {
+  data: {
     dictionary?: Record<string, any>;
-  };
+  } | null;
   additionalErrors: Record<string, any> | Array<any> | null;
 };
 
