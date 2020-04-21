@@ -1,4 +1,4 @@
 export * from './actions';
-export * from './middleware-action';
+export * from './middleware-actions';
 export * from './selectors';
 export * from './reducer';

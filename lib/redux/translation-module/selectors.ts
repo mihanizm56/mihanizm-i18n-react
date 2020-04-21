@@ -9,6 +9,11 @@ export const getTranslationsDictionary = createSelector(
   (state: ITranslationStorage) => (state ? state.dictionary : {}),
 );
 
+export const getTranslationsBackendErrorsDictionary = createSelector(
+  [tranlationState],
+  (state: ITranslationStorage) => (state ? state.backendErrors : {}),
+);
+
 export const getTranslationsLocale = createSelector(
   [tranlationState],
   (state: ITranslationStorage) => (state ? state.locale : {}),
