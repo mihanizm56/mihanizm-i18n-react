@@ -25,7 +25,9 @@ export type IResponse = {
   error: boolean;
   errorText: string;
   data: {
-    tr?: Record<string, any>;
+    translate: {
+      tr: Record<string, any>;
+    };
   } | null;
   additionalErrors: Record<string, any> | Array<any> | null;
 };
