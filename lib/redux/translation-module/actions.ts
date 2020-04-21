@@ -22,6 +22,7 @@ export const setLangDictBackendErrorsAction: Action<
 });
 
 export const FETCH_LANG_DICT_BACKEND_ACTION = 'FETCH_LANG_DICT_BACKEND_ACTION';
-export const fetchLangDictBackendAction: BaseAction = () => ({
+export const fetchLangDictBackendAction: Action<string> = payload => ({
   type: FETCH_LANG_DICT_BACKEND_ACTION,
+  payload,
 });

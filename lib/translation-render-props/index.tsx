@@ -1,6 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { getTranslationsDictionary } from '@/redux/translation-module';
+import { findText } from '@/utils/find-text';
 
 type PropsType = {
   translatedDict: Record<string, any>;
@@ -9,9 +10,10 @@ type PropsType = {
 
 export const WrappedComponent = memo(
   ({ translatedDict, children }: PropsType) => {
-    const i18n = useCallback((key: string) => translatedDict[key] || key, [
-      translatedDict,
-    ]);
+    const i18n = useCallback(
+      (key: string) => findText({ dictionary: translatedDict, tKey: key }),
+      [translatedDict],
+    );
 
     return children({ i18n });
   },

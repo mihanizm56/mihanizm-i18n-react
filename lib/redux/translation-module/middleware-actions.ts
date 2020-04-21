@@ -13,10 +13,8 @@ export const fetchDictionaryAction = async ({
       throw new Error(errorText);
     }
 
-    if (data && data.dictionary) {
-      dispatch(
-        setLangDictAction({ dictionary: data.dictionary, locale: lang }),
-      );
+    if (data && data.tr) {
+      dispatch(setLangDictAction({ dictionary: data.tr, locale: lang }));
     }
   } catch (error) {
     console.error('error when fetch new dict', error);
@@ -35,8 +33,8 @@ export const fetchDictionaryBackendErrorsAction = async ({
       throw new Error(errorText);
     }
 
-    if (data && data.dictionary) {
-      dispatch(setLangDictBackendErrorsAction(data.dictionary));
+    if (data && data.tr) {
+      dispatch(setLangDictBackendErrorsAction(data.tr));
     }
   } catch (error) {
     console.error('error when fetch new dict', error);

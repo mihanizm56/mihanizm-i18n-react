@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { getTranslationsDictionary } from '@/redux/translation-module';
+import { findText } from '@/utils/find-text';
 
 type PropsType = {
   translatedDict: Record<string, any>;
@@ -8,7 +9,8 @@ type PropsType = {
 
 export const ConnectedWrapperFunction = (Component: any) =>
   class WrappedContainer extends PureComponent<PropsType> {
-    translate = (key: string) => this.props.translatedDict[key] || key;
+    translate = (key: string) =>
+      findText({ dictionary: this.props.translatedDict, tKey: key });
 
     render = () => (
       <Component

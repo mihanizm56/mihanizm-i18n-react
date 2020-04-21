@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-type TranslationRequestType = (lang: string) => Promise<IResponse>;
+type TranslationRequestType = (lang?: string) => Promise<IResponse>;
 
 export interface ITranslationStorage {
   dictionary: Record<string, any>;
@@ -26,14 +26,14 @@ export type IResponse = {
   error: boolean;
   errorText: string;
   data: {
-    dictionary?: Record<string, any>;
+    tr?: Record<string, any>;
   } | null;
   additionalErrors: Record<string, any> | Array<any> | null;
 };
 
 export type FetchDictionaryActionParams = {
   dispatch: Dispatch;
-  lang: string;
+  lang?: string;
   request: TranslationRequestType;
 };
 
