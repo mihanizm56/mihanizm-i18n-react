@@ -1,10 +1,9 @@
 import { Dispatch } from 'redux';
 
-type TranslationRequestType = (lang?: string) => Promise<IResponse>;
+export type TranslationRequestType = (lang?: string) => Promise<IResponse>;
 
 export interface ITranslationStorage {
   dictionary: Record<string, any>;
-  backendErrors: Record<string, any>;
   locale: string;
 }
 
@@ -35,9 +34,4 @@ export type FetchDictionaryActionParams = {
   dispatch: Dispatch;
   lang?: string;
   request: TranslationRequestType;
-};
-
-export type TranslationRequestsType = {
-  requestToFetchDict: TranslationRequestType;
-  requestToFetchBackendErrorsDict: TranslationRequestType;
 };

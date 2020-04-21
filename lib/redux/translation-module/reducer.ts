@@ -1,12 +1,8 @@
 import { ITranslationStorage } from '@/types/types';
-import {
-  SET_LANG_DICT_ACTION,
-  SET_LANG_DICT_BACKEND_ERRORS_ACTION,
-} from './actions';
+import { SET_LANG_DICT_ACTION } from './actions';
 
 const initialState: ITranslationStorage = {
   dictionary: {},
-  backendErrors: {},
   locale: 'en',
 };
 
@@ -20,12 +16,6 @@ export const translationReducer = (
         ...state,
         dictionary: payload.dictionary,
         locale: payload.locale,
-      };
-
-    case SET_LANG_DICT_BACKEND_ERRORS_ACTION:
-      return {
-        ...state,
-        backendErrors: payload,
       };
 
     default:
