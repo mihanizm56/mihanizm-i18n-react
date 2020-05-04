@@ -1,4 +1,4 @@
-import { Action, BaseAction } from '@/types/types';
+import { Action } from '@/types/types';
 
 export const SET_LANG_DICT_ACTION = 'SET_LANG_DICT_ACTION';
 export const setLangDictAction: Action<Record<string, any>> = payload => ({

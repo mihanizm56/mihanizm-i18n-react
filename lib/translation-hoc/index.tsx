@@ -1,27 +1,43 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { getTranslationsDictionary } from '@/redux/translation-module';
-import { findText } from '@/utils/find-text';
+import IntlMessageFormat from 'intl-messageformat';
+import {
+  getTranslationsDictionary,
+  getTranslationsLocale,
+} from '@/redux/translation-module';
 
 type PropsType = {
-  translatedDict: Record<string, any>;
+  dictionary: Record<string, any>;
+  locale: string;
 };
 
 export const ConnectedWrapperFunction = (Component: any) =>
   class WrappedContainer extends PureComponent<PropsType> {
-    translate = (key: string) =>
-      findText({ dictionary: this.props.translatedDict, tKey: key });
+    translate = (key: string, options?: Record<string, any>) => {
+      const { locale, dictionary } = this.props;
 
-    render = () => (
-      <Component
-        i18n={this.translate}
-        _hiddenPrivatePropToMakeRerenderOnly={this.props.translatedDict}
-      />
-    );
+      const phraseFormDict = dictionary[key] || key;
+
+      const message = new IntlMessageFormat(phraseFormDict, locale).format(
+        options,
+      );
+
+      return message;
+    };
+
+    render() {
+      return (
+        <Component
+          i18n={this.translate}
+          _hiddenPrivatePropToMakeRerenderOnly={this.props.dictionary}
+        />
+      );
+    }
   };
 
 const mapStateToProps = (store: any) => ({
-  translatedDict: getTranslationsDictionary(store),
+  dictionary: getTranslationsDictionary(store),
+  locale: getTranslationsLocale(store),
 });
 
 export const TranslationHOC = (Component: any) =>

@@ -2,14 +2,19 @@ import { createSelector } from 'reselect';
 import { ITranslationStorage, ITranslationStoragePart } from '@/types/types';
 
 const tranlationState = (state: ITranslationStoragePart) =>
-  state.translationStorage;
+  state
+    ? state.translationStorage
+    : {
+        dictionary: {},
+        locale: '',
+      };
 
 export const getTranslationsDictionary = createSelector(
   [tranlationState],
-  (state: ITranslationStorage) => (state ? state.dictionary : {}),
+  ({ dictionary }: ITranslationStorage) => dictionary,
 );
 
 export const getTranslationsLocale = createSelector(
   [tranlationState],
-  (state: ITranslationStorage) => (state ? state.locale : {}),
+  ({ locale }: ITranslationStorage) => locale,
 );

@@ -1,21 +1,32 @@
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { getTranslationsDictionary } from '@/redux/translation-module';
-import { findText } from '@/utils/find-text';
+import IntlMessageFormat from 'intl-messageformat';
+import {
+  getTranslationsDictionary,
+  getTranslationsLocale,
+} from '@/redux/translation-module';
 
 type PropsType = {
   tKey: string;
+  options?: Record<string, any>;
 };
 
-export const TranslationComponent = memo(({ tKey }: PropsType) => {
-  const dictionary = useSelector((store: any) =>
-    getTranslationsDictionary(store),
-  );
+export const TranslationComponent = React.memo(
+  ({ tKey, options }: PropsType) => {
+    const dictionary = useSelector((store: any) =>
+      getTranslationsDictionary(store),
+    );
+    const locale = useSelector((store: any) => getTranslationsLocale(store));
 
-  const translatedText = useMemo(() => findText({ dictionary, tKey }), [
-    dictionary,
-    tKey,
-  ]);
+    const phraseFormDict = useMemo(() => dictionary[tKey] || tKey, [
+      dictionary,
+      tKey,
+    ]);
 
-  return translatedText;
-});
+    const message = new IntlMessageFormat(phraseFormDict, locale).format(
+      options,
+    );
+
+    return message;
+  },
+);

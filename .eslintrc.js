@@ -28,6 +28,7 @@ module.exports = {
         printWidth: 80,
       },
     ],
+    'import/no-unresolved': 0,
     'no-implied-eval': 2,
     'jsx-a11y/media-has-caption': 'off',
     'import/prefer-default-export': 0,
@@ -107,9 +108,6 @@ module.exports = {
       alias: {
         map: [['@', './lib']],
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      },
-      webpack: {
-        config: './webpack.config.js',
       },
     },
   },
