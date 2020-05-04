@@ -13,10 +13,8 @@ export const fetchDictionaryAction = async ({
       throw new Error(errorText);
     }
 
-    if (data && data.translate && data.translate.tr) {
-      dispatch(
-        setLangDictAction({ dictionary: data.translate.tr, locale: lang }),
-      );
+    if (data) {
+      dispatch(setLangDictAction({ dictionary: data, locale: lang }));
     }
   } catch (error) {
     console.error('error when fetch new dict', error);

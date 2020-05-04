@@ -1,6 +1,6 @@
 # @mihanizm56/i18n-react
 
-## Sollution for i18n for react&redux usage
+## Sollution for i18n for react&redux usage based on intl-messageformat library (format.js)
 
 ## Examples of usage
 
@@ -18,8 +18,6 @@ import { rootReducer } from "./root-reducer";
 import { translationMiddleware, translationStorage } from "@mihanizm56/i18n-react";
 import { fetchLanguageKeysRequest } from "../../services/api/requests/fetch-language-keys";
 
-const LANG_URL = "http://127.0.0.1:5000/translations";
-
 const rootReducer = combineReducers({
   translationStorage,
     // ...other reducers
@@ -29,10 +27,7 @@ export const createAppStore = () => {
   const store = createStore(
     rootReducer,
     applyMiddleware(
-      translationMiddleware({
-        url: LANG_URL,
-        request: fetchLanguageKeysRequest,
-      })
+      translationMiddleware(fetchLanguageKeysRequest)
     )
   );
 
@@ -54,7 +49,7 @@ import { TranslationComponent } from "@mihanizm56/i18n-react";
 
 export const CardWithComponent = memo(() => (
   <p>
-    <TranslationComponent tKey="card-text" />
+    <TranslationComponent key="card-text" options={{foo:'bar'}}/>
   </p>
 ));
 ```
@@ -67,7 +62,7 @@ import { TranslationRenderProps } from "@mihanizm56/i18n-react";
 
 export const CardRenderProps = memo(({ i18n }) => (
   <TranslationRenderProps>
-    {({ i18n }) => <p>{i18n("card-text")}</p>}
+    {({ i18n }) => <p>{i18n("card-text", {foo:'bar'})}</p>}
   </TranslationRenderProps>
 ));
 ```
@@ -79,7 +74,7 @@ import React, { memo } from "react";
 import { TranslationHOC } from "@mihanizm56/i18n-react";
 
 export const TranslatedCard = memo(({ i18n }) => (
-  <div>{i18n("card-text")}</div>
+  <div>{i18n("card-text", {foo:'bar'})}</div>
 ));
 
 export const CardHOC = TranslationHOC(TranslatedCard);
@@ -88,13 +83,13 @@ export const CardHOC = TranslationHOC(TranslatedCard);
 #### example of the request to get i18n dictionary
 
 ```javascript
-export const fetchLanguageKeysRequest = ({ lang, url }) =>
-  fetch(`${url}?lang=${lang}`).then((data) => data.json());
+export const fetchLanguageKeysRequest = (lang) =>
+  fetch(`http://google.com?lang=${lang}`).then((data) => data.json());
 ```
 
 ### !!! Attention !!!
 
-### Response of the request must have there fields:
+### Response of the request must have that fields:
 
 - error (boolean) - the flag of the response status
 - errorText (string) - the main error message from the backend
