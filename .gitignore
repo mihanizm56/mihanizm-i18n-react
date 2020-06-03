@@ -13,3 +13,7 @@
 
 # Misc
 .DS_Store
+
+# Misc
+.vscode
+.idea

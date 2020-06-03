@@ -9,24 +9,22 @@
       "madeAt": 1588551299087
     },
     "1500|@commitlint/cli>@commitlint/lint>@commitlint/parse>conventional-commits-parser>meow>yargs-parser": {
-      "decision": "ignore",
-      "madeAt": 1588551304740,
-      "expiresAt": 1591143286983
+      "decision": "fix",
+      "madeAt": 1591180681788
     },
     "1500|@commitlint/cli>@commitlint/read>git-raw-commits>meow>yargs-parser": {
-      "decision": "ignore",
-      "madeAt": 1588551304740,
-      "expiresAt": 1591143286983
+      "decision": "fix",
+      "madeAt": 1591180691377
     },
     "1500|@commitlint/cli>meow>yargs-parser": {
       "decision": "ignore",
-      "madeAt": 1588551304740,
-      "expiresAt": 1591143286983
+      "madeAt": 1591180694896,
+      "expiresAt": 1593772669358
     },
     "1500|npm-audit-resolver>audit-resolve-core>yargs-parser": {
       "decision": "ignore",
-      "madeAt": 1588551304740,
-      "expiresAt": 1591143286983
+      "madeAt": 1591180694896,
+      "expiresAt": 1593772669358
     }
   },
   "rules": {},
